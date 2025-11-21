@@ -1,0 +1,68 @@
+{
+  "name": "use-multiple-gits",
+  "version": "1.0.0",
+  "description": "CLI tool to manage multiple git configurations (user.name, user.email, SSH keys) with easy switching between identities",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "multiGit": "./dist/bin/multiGit.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
+  },
+  "keywords": [
+    "git",
+    "config",
+    "configuration",
+    "multiple",
+    "ssh",
+    "identity",
+    "cli",
+    "switch",
+    "manager",
+    "git-config",
+    "git-identity"
+  ],
+  "author": {
+    "name": "Narek Kolyan",
+    "url": "https://github.com/narek941"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/narek941/use-multiple-gits.git"
+  },
+  "bugs": {
+    "url": "https://github.com/narek941/use-multiple-gits/issues"
+  },
+  "homepage": "https://github.com/narek941/use-multiple-gits#readme",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "files": [
+    "dist/**/*.js",
+    "dist/**/*.d.ts",
+    "!dist/**/__tests__/**",
+    "!dist/**/*.test.*",
+    "README.md",
+    "LICENSE"
+  ],
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "commander": "^11.1.0",
+    "inquirer": "^9.2.12"
+  },
+  "devDependencies": {
+    "@types/inquirer": "^9.0.9",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^20.10.0",
+    "jest": "^30.2.0",
+    "ts-jest": "^29.4.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+}
