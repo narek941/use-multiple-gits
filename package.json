@@ -1,6 +1,6 @@
 {
   "name": "use-multiple-gits",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "CLI tool to manage multiple git configurations (user.name, user.email, SSH keys) with easy switching between identities",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
