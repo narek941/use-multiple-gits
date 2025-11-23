@@ -153,6 +153,6 @@ MIT
 
 ## 👤 Author
 
-**Narek Kolyan** - [GitHub](https://github.com/narek941)
+**Narek Kolyan** - [GitHub](https://github.com/narek941) | [Website](https://github.com/narek941/narek-qolyan-cv/deployments/Production)
 
 Created with ❤️ for developers who juggle multiple git identities.
