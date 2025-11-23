@@ -23,25 +23,66 @@ A CLI tool to easily manage multiple git configurations (user.name, user.email, 
 
 ## Installation
 
+### Option 1: Quick Setup (Recommended)
+
+Run the automated setup script:
+
 ```bash
+curl -fsSL https://raw.githubusercontent.com/narek941/use-multiple-gits/main/setup.sh | bash
+```
+
+Or download and run locally:
+
+```bash
+curl -O https://raw.githubusercontent.com/narek941/use-multiple-gits/main/setup.sh
+chmod +x setup.sh
+./setup.sh
+```
+
+### Option 2: Manual Installation
+
+```bash
+# Install globally
 npm install -g use-multiple-gits
+
+# Run setup (initializes everything automatically)
+multiGit setup
+
+# Or initialize manually
+multiGit init
 ```
 
 ## Quick Start
 
-### 1. Initialize
+### Automated Setup (Easiest)
 
 ```bash
-multiGit init
+# Install and setup in one command
+npm install -g use-multiple-gits && multiGit setup
+
+# Add your first configuration (interactive)
+multiGit add work
+
+# Or with auto-generated SSH key (recommended!)
+multiGit add work --generate-ssh-key
 ```
 
-This will:
+### Manual Steps
 
-- Create `~/.bin/` directory
-- Add `~/.bin` to your PATH in `~/.zshrc`
-- Set up the configuration system
+1. **Install**: `npm install -g use-multiple-gits`
+2. **Setup**: `multiGit setup` (or `multiGit init`)
+3. **Add Config**: `multiGit add work` (you'll be prompted for details)
+4. **Reload Shell**: `source ~/.zshrc` (or restart terminal)
+5. **Use It**: `use-work` to switch configurations
 
-### 2. Add Your First Configuration
+### What Setup Does
+
+- ✅ Creates `~/.bin/` directory
+- ✅ Adds `~/.bin` to your PATH in `~/.zshrc` (automatically, no prompts)
+- ✅ Sets up the configuration system
+- ✅ Ready to add configurations
+
+### Adding Your First Configuration
 
 ```bash
 multiGit add work
@@ -54,21 +95,19 @@ You'll be prompted for:
 - Git user.email
 - SSH key filename (e.g., `id_ed25519_work`)
 
-**Note**: Make sure your SSH key exists before adding the configuration. Generate it with:
+**Auto-generate SSH key** (recommended for first-time setup):
 
 ```bash
-ssh-keygen -t ed25519 -C "your.email@company.com" -f ~/.ssh/id_ed25519_work
+multiGit add work --generate-ssh-key
 ```
 
-### 3. Reload Shell
+This will automatically create the SSH key if it doesn't exist!
+
+### Use It!
 
 ```bash
-source ~/.zshrc
-```
+source ~/.zshrc  # Reload shell (or restart terminal)
 
-### 4. Use It!
-
-```bash
 use-work      # Switch to work configuration
 use-personal  # Switch to personal configuration
 use-company   # Switch to any other configuration
@@ -76,9 +115,17 @@ use-company   # Switch to any other configuration
 
 ## Commands
 
+### `multiGit setup`
+
+Complete automated setup: initializes the system automatically (no prompts). This is the easiest way to get started!
+
+```bash
+multiGit setup
+```
+
 ### `multiGit init`
 
-Initialize the multi-git configuration system. Run this first.
+Initialize the multi-git configuration system. Usually not needed if you use `multiGit setup`.
 
 ### `multiGit add <name> [--generate-ssh-key]`
 

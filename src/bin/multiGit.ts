@@ -13,6 +13,7 @@ import { initCommand } from '../commands/init';
 import { listCommand } from '../commands/list';
 import { removeCommand } from '../commands/remove';
 import { setLocalCommand } from '../commands/setLocal';
+import { setupCommand } from '../commands/setup';
 
 const packageJson = JSON.parse(
   readFileSync(join(__dirname, '../../package.json'), 'utf-8')
@@ -24,6 +25,19 @@ program
   .name('multiGit')
   .description('CLI tool to manage multiple git configurations')
   .version(packageJson.version);
+
+program
+  .command('setup')
+  .description('Complete setup: install, initialize, and optionally add first config')
+  .option('--auto-add <name>', 'Automatically add a configuration after setup')
+  .option('--generate-ssh-key', 'Generate SSH key when adding config')
+  .action((options) => {
+    setupCommand({
+      autoAdd: !!options.autoAdd,
+      configName: options.autoAdd,
+      generateSshKey: options.generateSshKey,
+    });
+  });
 
 program
   .command('init')

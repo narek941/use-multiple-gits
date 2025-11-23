@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "bin": {
-    "multiGit": "./dist/bin/multiGit.js"
+    "multiGit": "dist/bin/multiGit.js"
   },
   "scripts": {
     "build": "tsc",
@@ -34,7 +34,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/narek941/use-multiple-gits.git"
+    "url": "git+https://github.com/narek941/use-multiple-gits.git"
   },
   "bugs": {
     "url": "https://github.com/narek941/use-multiple-gits/issues"

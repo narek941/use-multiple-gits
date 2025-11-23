@@ -44,24 +44,15 @@ export const initCommand = async (): Promise<void> => {
     const hasBinInPath = zshrcContent.includes('$HOME/.bin') || zshrcContent.includes('~/.bin');
 
     if (!hasBinInPath) {
-      const { addToPath } = await inquirer.prompt<{ addToPath: boolean }>([
-        {
-          type: 'confirm',
-          name: 'addToPath',
-          message: 'Add ~/.bin to PATH in ~/.zshrc?',
-          default: true,
-        },
-      ]);
+      const currentContent = fs.readFileSync(ZSHRC_PATH, 'utf-8');
+      const pathExport = '\nexport PATH="$HOME/.bin:$PATH"\n';
 
-      if (addToPath) {
-        const currentContent = fs.readFileSync(ZSHRC_PATH, 'utf-8');
-        const pathExport = '\nexport PATH="$HOME/.bin:$PATH"\n';
-
-        if (!currentContent.includes(pathExport.trim())) {
-          fs.appendFileSync(ZSHRC_PATH, pathExport);
-          console.log(chalk.green('✅ Added ~/.bin to PATH'));
-        }
+      if (!currentContent.includes(pathExport.trim())) {
+        fs.appendFileSync(ZSHRC_PATH, pathExport);
+        console.log(chalk.green('✅ Added ~/.bin to PATH'));
       }
+    } else {
+      console.log(chalk.green('✅ ~/.bin already in PATH'));
     }
 
     await setInitialized();
